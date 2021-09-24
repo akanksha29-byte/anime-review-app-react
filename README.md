@@ -1,7 +1,7 @@
 
 ### features 
-Create user using email and password.
-Login using credentials.
+Create user using email and password.\
+Login using credentials.\
 Search by title
 
 # Getting Started with Create React App
