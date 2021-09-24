@@ -1,5 +1,5 @@
 
-### features 
+### Features 
 Create user using email and password.\
 Login using credentials.\
 Search by title
