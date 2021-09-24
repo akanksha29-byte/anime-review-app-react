@@ -15,8 +15,10 @@ const API_KEY =
 const App = () => {
   const [anime, setAnime] = useState([]);
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     const fetchApi = async () => {
       const result = await axios.get(
         "https://api.aniapi.com/v1/anime?per_page=20",
@@ -33,12 +35,17 @@ const App = () => {
       setAnime(result.data.data.documents);
     };
     fetchApi();
+    setLoading(false);
   }, []);
+
+  if (loading === true) {
+    return <h2>Loading...</h2>;
+  }
 
   return (
     <div>
-      <AuthProvider>
-        <Router>
+      <Router>
+        <AuthProvider>
           <NavBar />
           <Switch>
             <Route path="/signup" component={SignUp} />
@@ -52,8 +59,8 @@ const App = () => {
               <Home anime={anime} search={search} setSearch={setSearch} />
             </Route>
           </Switch>
-        </Router>
-      </AuthProvider>
+        </AuthProvider>
+      </Router>
     </div>
   );
 };

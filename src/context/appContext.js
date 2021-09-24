@@ -19,11 +19,15 @@ export const AuthProvider = ({ children }) => {
   const [currentAnime, setCurrentAnime] = useState();
 
   useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
-      setLoading(false);
-    });
-    return () => unSubscribe;
+    let unSubscribe;
+    const run = async () => {
+      unSubscribe = await onAuthStateChanged(auth, (user) => {
+        setCurrentUser(user);
+      });
+    };
+    run();
+    setLoading(false);
+    return unSubscribe;
   }, []);
 
   const signUp = (email, password) => {
