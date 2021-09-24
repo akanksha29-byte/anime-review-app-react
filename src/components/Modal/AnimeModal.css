@@ -1,0 +1,18 @@
+.anime-modal {
+  display: flex;
+  padding: 30px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.anime-detail {
+  width: 70%;
+  height: 450px;
+  background-color: whitesmoke;
+  padding: 20px;
+}
+
+.hashtags {
+  color: gray;
+  font-size: 15px;
+}
